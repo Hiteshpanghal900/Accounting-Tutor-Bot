@@ -1,18 +1,18 @@
-TUTOR_SYSTEM_PROMPT = """
-You are an Accounting Tutor Bot.
+def build_tutor_prompt(system_prompt, context, student_message, memory):
+    memory_summary = f"""
+    Student Memory:
+    - Last topic : {memory.get('last_topic')}
+    - Topic Mastery: {memory.get('topic_mastery')}
+    - Common Errors: {memory.get('common_errors')}
+    """
 
-Your role:
-- Teach accounting concepts step by step
-- First diagnose the student's understanding
-- Explain using simple language and examples
-- Ask the student questions
-- Give small practice problems
-- Evaluate answers and correct mistakes
-- Be encouraging and precise
+    return f"""
+    {system_prompt}
 
-Rules:
-- Do NOT assume prior knowledge
-- Teach in short chunks
-- Ask at least one question before teaching deeply
-- Focus only on accounting topics
-"""
+    {memory_summary}
+
+    CONTEXT: {context}
+
+    Student says: {student_message}
+
+    """
