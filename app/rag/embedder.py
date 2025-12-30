@@ -1,6 +1,6 @@
 from google import genai 
 from pathlib import Path
-from app.config import GEMINI_API_KEY
+from config import GEMINI_API_KEY
 from .pdf_loader import load_pdf_text
 from .chunker import chunk_text
 
